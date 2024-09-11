@@ -22,6 +22,7 @@ class PokemonRepository implements PokemonRepositoryInterface
     public function getPokemons(array $request): array
     {
         if (!($results = Cache::get(self::CACHE_KEY . 'all'))) {
+
             try {
                 $query = http_build_query([
                     'offset' => 0,
@@ -30,7 +31,7 @@ class PokemonRepository implements PokemonRepositoryInterface
 
                 $response = $this->client->request('GET', $this->config['url'] . '?' . $query);
 
-                $resultsTmp = json_decode($response->getBody()->getContents(), true);
+                $resultsTmp = json_decode($response->getBody(), true);
 
                 $results = $resultsTmp['results'];
 
@@ -66,7 +67,7 @@ class PokemonRepository implements PokemonRepositoryInterface
             try {
                 $response = $this->client->request('GET', $this->config['url'] . '/' . $name);
 
-                $result = json_decode($response->getBody()->getContents(), true);
+                $result = json_decode($response->getBody(), true);
 
                 Cache::put(self::CACHE_KEY . $name, $result);
             } catch (\Exception $e) {
