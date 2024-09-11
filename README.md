@@ -1,63 +1,35 @@
-# ans/pokédex - 
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-**This project will depend on your ability to fulfil the task 
-requirements. Any potential design skills are a bonus, but usability, 
-performance and security will be taken into account.**
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
+## Launching
 
-## Introduction
-This project provides a starting point which will allow you to create your own 
-web-based encyclopedia based on the popular franchise Pokémon - also known as 
-a pokédex.
+- Clone repository
+- `cd php-test` - go to project directory
+- `cp .env.example .env` - copy environment files
+- `./install.sh` or `./start.sh` - run docker containers for project: PHP and MySQL
+- `docker ps` - find running PHP container name, f.e.: `php-test-php-1`
+- `docker exec -it php-test-php-1 bash` - go inside of container
+- run `composer install`
+- run `npm install`
+- run `php artisan migrate:fresh`
+- `./stop.sh` - to stop containers, if it needs
 
+## Testing
+- Inside of PHP container: `XDEBUG_MODE=coverage php artisan test --coverage`
+![img.png](img.png)
 
-## Project Requirements
+## UI examples
+- Use url `http://127.0.0.1/`
+- Character image isn't available
 
-We would like to have this project completed in Laravel. You are welcome to use Docker.
+![img_1.png](img_1.png)
 
-Please use the latest version of Laravel available: ![Laravel](https://img.shields.io/packagist/v/laravel/framework)
+![img_2.png](img_2.png)
 
-You can also utilise frontend frameworks like VueJS, React or utility frameworks like TailwindCSS. **Please bear in mind that design and integration of frontend frameworks is a bonus - we are not expecting you to do this**
-
-## Task Requirements
-
-For this challenge, we require a web app in the form of a pokédex, allowing users
-the ability to search for and display information for a specific pokémon.
-
-A RESTful API is available at [Pokéapi](https://pokeapi.co/) which will 
-provide you with all the data that you will need. You do not need to create 
-an account nor authenticate to consume the API, however, please 
-be aware that this API is rate-limited.
- 
-To get started, please fork of this repository either here on GitHub or via another public repository like GitLab.
-
-We recommend that you spend no more than one hour on this challenge,
-we are more interested in how you approach the task than spending lots of time on it.
-
-Once the time is up, feel free to use comments/notes/pseudo code on how you would proceed further.
-
-### User Stories
-
-| As an <type of user> | I want to <perform some task> | so that I can <achieve some goal> |
-|---|---|---|
-| End User | Search for a specific pokémon  | Improve my knowledge of pokémon abilities for my next Gym battle |
-
-
-### Acceptance Criteria
-
-| GIVEN | WHEN | THEN |
-|---|---|---|
-| I am on a main pokédex page | The page loads | I can see a full list of available pokémon |
-| ^ | ^ | I can see a search form to enter the name of a Pokemon to filter the full list |
-| ^ | I enter a name AND search | I can see a filtered list of matching results |
-| ^ | I can click an entry in the list | I am redirected to an overview page for the selected pokémon |
-| I am on the pokémon overview page | The page loads | I can see an image, name, species, height/weight and any abilities |
-| ^ | ^ | I can see a link back to the main page |
-
- 
-## Submission
-When you are ready to submit, please ensure you have forked this repository. No merge/pull request is required,
-and provide us with a link to your attempt.
-
-## Copyright
-All trademarks are the property of their respective owners.
+![img_3.png](img_3.png)
